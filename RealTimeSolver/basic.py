@@ -17,7 +17,7 @@ def getContours(image):
 	image = image.copy()
 	contours, _ = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 	all_contours = sorted(contours, key = cv2.contourArea, reverse = True)
-    	polygon = all_contours[0]
+	polygon = all_contours[0]
 	return contours, polygon
 
 def getCoords(image, polygon):
@@ -33,8 +33,8 @@ def getCoords(image, polygon):
 	bottom_right = polygon[np.argmax(sums)].squeeze() 
 	top_right = polygon[np.argmax(diffs)].squeeze()
 	bottom_left = polygon[np.argmin(diffs)].squeeze() 
-    
-    	return np.array([top_left, top_right, bottom_right, bottom_left], dtype = np.float32)
+	
+	return np.array([top_left, top_right, bottom_right, bottom_left], dtype = np.float32)
 
 def warp(image, coords):
 	ratio = 1.0
